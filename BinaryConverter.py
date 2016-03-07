@@ -200,5 +200,9 @@ print(Magnitude(73))
 print(Excess(73))
 print(Excess(-73))
 
+print(Ones(73))
+
+print(Twos(73))
+print(Twos(-73))
 assert(Byte("11111111") == Unsigned(255))
 assert(Unsigned(244) == convert(Unsigned(244), Unsigned))
