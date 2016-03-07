@@ -93,7 +93,42 @@ class Magnitude(Byte):
 
 
 class Ones(Byte):
-    pass
+    lower_bound = -127
+    upper_bound = 127
+
+    def __init__(self, base_10: int):
+
+        self.base_10 = base_10
+
+        if self.lower_bound <= base_10 <= self.upper_bound:
+            pattern_string = ""
+
+            if base_10 < 0:
+                pattern_string += "1"
+                base_10 = abs(base_10)
+            else:
+                pattern_string += "0"
+
+            index_values = [64, 32, 16, 8, 4, 2, 1]
+
+            for value in index_values:
+                if base_10 >= value:
+                    pattern_string += "1"
+                    base_10 -= value
+                else:
+                    pattern_string += "0"
+            inverted_string = ""
+            for bit in pattern_string:
+                if bit == "0":
+                    bit = "1"
+                elif bit == "1":
+                    bit = "0"
+                inverted_string += bit
+
+            super().__init__(inverted_string)
+
+        else:
+            raise Exception("This type of signed integer can only support numbers from {} to {}".format(self.lower_bound, self.upper_bound))
 
 class Twos(Byte):
     pass
