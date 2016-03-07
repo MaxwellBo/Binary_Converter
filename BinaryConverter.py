@@ -47,10 +47,10 @@ class Unsigned(Byte):
         else:
             raise Exception("Unsigned integers can only support numbers from {} to {})".format(self.lower_bound, self.upper_bound))
 
-    def negate():
+    def negate(self):
         pass
 
-    def to_base_10():
+    def to_base_10(self):
         # TODO: To be implemented
         return self.base_10
 
@@ -84,10 +84,10 @@ class Magnitude(Byte):
         else:
             raise Exception("This type of signed integer can only support numbers from {} to {}".format(self.lower_bound, self.upper_bound))
 
-    def negate():
+    def negate(self):
         pass
 
-    def to_base_10():
+    def to_base_10(self):
         # TODO: To be implemented
         return self.base_10
 
@@ -98,17 +98,28 @@ class Ones(Byte):
 class Twos(Byte):
     pass
 
-class Excess(Byte):
-    pass
+class Excess(Unsigned):
+    def __init__(self, base_10: int):
+        self.to_base_10
+
+        super().__init__(base_10 + 128)
 
 def convert(from_instance, to_class):
     return to_class(from_instance.to_base_10())
+
+    def to_base_10(self):
+        # TODO: To be implemented
+        return self.base_10
+
 
 
 # TESTS
 
 print(Unsigned(73))
 print(Magnitude(73))
+
+print(Excess(73))
+print(Excess(-73))
 
 assert(Byte("11111111") == Unsigned(255))
 assert(Unsigned(244) == convert(Unsigned(244), Unsigned))
