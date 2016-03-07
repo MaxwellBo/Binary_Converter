@@ -23,6 +23,8 @@ class Byte(object):
         return self.__repr__() == other.__repr__()
 
 
+# Note that all classes should store the decimal to ease in conversion
+
 class Unsigned(Byte):
     def __init__(self, decimal: int):
 
